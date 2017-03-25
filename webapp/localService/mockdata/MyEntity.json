@@ -1,0 +1,14 @@
+ [{
+     "__metadata": {
+         "id": "http://vhcalnplci.dummy.nodomain:8000/sap/opu/odata/SAP/ZODATA_VALIDATION_SRV/MyEntity('PI')",
+         "uri": "http://vhcalnplci.dummy.nodomain:8000/sap/opu/odata/SAP/ZODATA_VALIDATION_SRV/MyEntity('PI')",
+         "type": "ZODATA_VALIDATION_SRV.MyEntity"
+     },
+     "Key1": "PI",
+     "Field1": "3.00",
+     "ShowWarning": true,
+     "ShowInfo": true,
+     "ShowSuccess": true,
+     "ShowError": false,
+     "ThrowException": false
+ }]

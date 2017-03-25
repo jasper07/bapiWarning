@@ -1,0 +1,4 @@
+# library specific excludes - need to be consistent with the library-local .eslintignore files
+./webapp/thirdparty/**
+./webapp/localservice/**
+./webapp/util/**

@@ -1,0 +1,31 @@
+<mvc:View controllerName="bapiWarning.controller.Form1" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns="sap.m"  >
+	<Page id="page1" title="Bapi Warning">
+		<content>
+			<MessageStrip
+				text="Change the value and press Enter"
+				showIcon="true"
+				showCloseButton="true">
+			</MessageStrip>
+			<form:SimpleForm editable="true">
+				<Label text="Field For Validation" />
+				<Input id="Field1" value="{Field1}" change="onField1Change"/>
+				<Label text="Show Warning"/>
+				<Switch type="AcceptReject" state="{ShowWarning}"/>
+				<Label text="Show Info"/>
+				<Switch type="AcceptReject" state="{ShowInfo}"/>
+				<Label text="Show Success"/>
+				<Switch type="AcceptReject" state="{ShowSuccess}"/>
+				<Label text="Show Error"/>
+				<Switch type="AcceptReject" state="{ShowError}"/>
+				<Label text="Throw Exception"/>
+				<Switch type="AcceptReject" state="{ThrowException}"/>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button icon="sap-icon://message-popup" text="{message>/length}" type="Emphasized" press="openMessagePopover" />
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

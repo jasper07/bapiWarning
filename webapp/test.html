@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bapi Warning</title>
+
+    <script id="sap-ui-bootstrap" type="text/javascript" src="/sdk/1.40.12/resources/sap-ui-core.js" data-sap-ui-theme="sap_belize" data-sap-ui-libs="sap.m" data-sap-ui-resourceroots='{"bapiWarning": "./"}'>
+        //src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require(["sap/ui/core/ComponentContainer", "bapiWarning/localService/Mockserver"],
+                function(ComponentContainer, Mockserver) {
+                    Mockserver.init();
+                    // initialize the UI component
+                    new ComponentContainer({
+                        height: "100%",
+                        name: "bapiWarning"
+                    }).placeAt("content");
+                });
+        });
+    </script>
+</head>
+
+<body class="sapUiBody" id="content">
+</body>
+
+</html>
