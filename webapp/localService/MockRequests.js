@@ -40,10 +40,6 @@ sap.ui.define(["sap/ui/base/Object"],
                         const sType = this._highestSeverityMessage(aMessages);
                         let oLeadingMessage = aMessages.find(oMessage => oMessage.severity === sType);
 
-                        // remove leading message from the messages
-                        let iIndex = aMessages.findIndex(o => o === oLeadingMessage);
-                        aMessages.splice(iIndex, 1);
-
                         if (!oEntity.ThrowException) {
                             iResponse = 204;
                             // serialize the messages to the http header "sap-messages"
@@ -84,6 +80,10 @@ sap.ui.define(["sap/ui/base/Object"],
              * @returns {object}    header object
              */
             _serializeHeader: function(aMessages, oLeadingMessage) {
+                // remove leading message from the messages
+                let iIndex = aMessages.findIndex(o => o === oLeadingMessage);
+                aMessages.splice(iIndex, 1);
+
                 oLeadingMessage["details"] = aMessages;
                 return { "sap-message": JSON.stringify(oLeadingMessage) };
             },
@@ -95,8 +95,15 @@ sap.ui.define(["sap/ui/base/Object"],
              * @return {Object}  object of messages formatted for body
              */
             _serializeBody: function(aMessages, oLeadingMessage) {
-                oLeadingMessage["innererror"] = { "errordetails": aMessages };
-                return { "error": oLeadingMessage };
+                let oError = {
+                    "code": oLeadingMessage["code"],
+                    "message": {
+                        "lang": "en",
+                        "value": oLeadingMessage["message"]
+                    },
+                    "innererror": { "errordetails": aMessages }
+                };
+                return { "error": oError };
             },
 
             /**
@@ -113,6 +120,7 @@ sap.ui.define(["sap/ui/base/Object"],
              * get messages
              * @param {oject} oEntity Entity
              * @param {string} sField Field name
+             * @param {string} sOrigin body or header
              * @returns {array} list of message
              */
             _getMessages: function(oEntity, sField, sOrigin) {
