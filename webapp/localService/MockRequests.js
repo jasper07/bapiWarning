@@ -52,7 +52,7 @@ sap.ui.define(["sap/ui/base/Object"],
                             let oMockdata = this._oMockServer._oMockdata[sEntitySetName];
                             let iIndex = oMockdata.findIndex(o => o.Key1 === oEntity.Key1);
                             if (iIndex > -1) {
-                                jQuery.extend(oMockdata[iIndex], oEntity);
+                                Object.assign(oMockdata[iIndex], oEntity);
                             }
                         } else {
                             // serialize the exception to response body
