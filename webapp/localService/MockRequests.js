@@ -92,7 +92,7 @@ sap.ui.define(["sap/ui/base/Object"],
              * serialize the messages for inserted into the response body after and exception is thrown
              * @param {array} aMessages messages
              * @param {object} oLeadingMessage leading menssage
-             * @return {Object}  object of messages formatted for body
+             * @return {Object}  object of messages formatted for body response
              */
             _serializeBody: function(aMessages, oLeadingMessage) {
                 let oError = {
