@@ -40,6 +40,10 @@ sap.ui.define(["sap/ui/base/Object"],
                         const sType = this._highestSeverityMessage(aMessages);
                         let oLeadingMessage = aMessages.find(oMessage => oMessage.severity === sType);
 
+                        // remove leading message from the messages
+                        let iIndex = aMessages.findIndex(o => o === oLeadingMessage);
+                        aMessages.splice(iIndex, 1);
+
                         if (!oEntity.ThrowException) {
                             iResponse = 204;
                             // serialize the messages to the http header "sap-messages"
